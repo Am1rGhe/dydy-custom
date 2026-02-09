@@ -1,8 +1,8 @@
 import { createServerSupabase } from "@/lib/supabase/server";
-import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import SizeSelector from "@/components/shop/SizeSelector";
+import AddToCartButton from "@/components/shop/AddToCartButton";
 
 interface PageProps {
   params: Promise<{
@@ -91,21 +91,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
               )}
             </div>
 
-            {/* Size sleector */}
-            {product.sizes &&
-              Array.isArray(product.sizes) &&
-              product.sizes.length > 0 && (
-                <SizeSelector sizes={product.sizes} />
-              )}
-
-            {/* Add to cart button */}
-            <button
-              disabled={!product.in_stock}
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-auto cursor-pointer"
-            >
-              <ShoppingCart className="w-5 h-5" />
-              {product.in_stock ? "Add to Cart" : "Out of Stock"}
-            </button>
+            {/* Add to cart button with size selector */}
+            <AddToCartButton
+              productId={product.id}
+              productName={product.name}
+              price={product.base_price}
+              inStock={product.in_stock}
+              sizes={product.sizes || []}
+            />
           </div>
         </div>
       </div>
