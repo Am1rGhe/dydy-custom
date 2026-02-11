@@ -1,5 +1,5 @@
 "use client";
-import { addToCart } from "@/lib/utils/cart";
+import { useCart } from "@/contexts/CartContext";
 import { Check, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
@@ -18,6 +18,7 @@ export default function AddToCartButton({
   inStock,
   sizes,
 }: AddToCartButtonProps) {
+  const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -59,7 +60,7 @@ export default function AddToCartButton({
                 className={`px-4 py-2 border-2 rounded-lg font-medium transition-colors cursor-pointer ${
                   selectedSize === size
                     ? "border-red-600 bg-red-50 text-red-600"
-                    : "border-gray-300 hover:border-red-600 hover:text-red-600"
+                    : "border-gray-300 text-gray-900 hover:border-red-600 hover:text-red-600"
                 }`}
               >
                 {size}
