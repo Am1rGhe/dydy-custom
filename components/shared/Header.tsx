@@ -1,6 +1,7 @@
 "use client";
-import { ShoppingCart, User, Menu } from "lucide-react";
+import { User, Menu } from "lucide-react";
 import Link from "next/link";
+import CartIcon from "./CartIcon";
 
 export default function Header() {
   return (
@@ -43,15 +44,7 @@ export default function Header() {
           {/* Right side cart and user */}
           <div className="flex items-center gap-4">
             {/* Cart icon */}
-            <Link 
-              href="/cart" 
-              className="relative p-2 hover:bg-red-50 rounded-full transition-colors group"
-            >
-              <ShoppingCart className="w-6 h-6 text-gray-700 group-hover:text-red-600 transition-colors" />
-              <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
-                0
-              </span>
-            </Link>
+            <CartIcon />
 
             {/* User icon */}
             <Link 
