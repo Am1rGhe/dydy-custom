@@ -3,7 +3,7 @@ import { createClientSupabase } from "@/lib/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Lock, Mail, User, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -25,9 +25,13 @@ type SignupFormData = z.infer<typeof signupSchema>;
 
 export default function SignupPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  
+  // Get redirect URL from query params
+  const redirectTo = searchParams.get("redirect") || "/auth/login";
   // same thing as the login page:
   const {
     register,
@@ -59,9 +63,10 @@ export default function SignupPage() {
       // case of success :
       setSuccess(true);
       setIsLoading(false);
-      // redirect to login after 2 seconds
+      // redirect to login after 2 seconds (with redirect param if exists)
       setTimeout(() => {
-        router.push("/auth/login");
+        const redirectParam = redirectTo !== "/auth/login" ? `?redirect=${redirectTo}` : "";
+        router.push(`/auth/login${redirectParam}`);
       }, 2000);
     } catch (err) {
       setError("Something went wrong. Please try again.");
@@ -221,7 +226,7 @@ export default function SignupPage() {
             <p className="text-sm text-gray-600">
               Already have an account?{" "}
               <Link
-                href="/auth/login"
+                href={redirectTo !== "/auth/login" ? `/auth/login?redirect=${redirectTo}` : "/auth/login"}
                 className="text-red-600 hover:text-red-700 font-semibold"
               >
                 Sign in

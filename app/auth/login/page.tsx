@@ -3,7 +3,7 @@ import { createClientSupabase } from "@/lib/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Lock, Mail } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,8 +18,12 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  // Get redirect URL from query params
+  const redirectTo = searchParams.get("redirect") || "/";
 
   const {
     register,
@@ -41,7 +45,8 @@ export default function LoginPage() {
         setIsLoading(false);
         return;
       }
-      router.push("/");
+      // Redirect to the intended page (or home if no redirect)
+      router.push(redirectTo);
       router.refresh();
     } catch (err) {
       setError("something went wrong. Please try again.");
@@ -142,7 +147,7 @@ export default function LoginPage() {
             <p className="text-sm text-gray-600">
               Don't have an account?{" "}
               <Link
-                href="/auth/signup"
+                href={redirectTo !== "/" ? `/auth/signup?redirect=${redirectTo}` : "/auth/signup"}
                 className="text-red-600 hover:text-red-700 font-semibold"
               >
                 Sign up
