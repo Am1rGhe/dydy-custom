@@ -50,7 +50,7 @@ export default async function ShopPage() {
                     {product.name}
                   </h3>
                   <p className="text-sm text-gray-500 mb-2">
-                    {product.categories.name || "Uncategorized"}
+                    {product.categories?.name || "Uncategorized"}
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-xl font-bold text-gray-900">
