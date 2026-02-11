@@ -1,55 +1,40 @@
 "use client";
 
-import { CartItem, getCartItems } from "@/lib/utils/cart";
+import { useCart } from "@/contexts/CartContext";
+import { createClientSupabase } from "@/lib/supabase/client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft } from "lucide-react";
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const { cart, updateQuantity, removeItem, cartTotal } = useCart();
+  const [isChecking, setIsChecking] = useState(false);
 
-  // load the cart from localStorage
-  useEffect(() => {
-    const items = getCartItems();
-    setCartItems(items);
-    setLoading(false);
-  }, []);
+  const handleCheckout = async () => {
+    setIsChecking(true);
+    
+    try {
+      const supabase = createClientSupabase();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-  // update quantity
-  const updateQuantity = (id: string, change: number) => {
-    const newCart = cartItems.map((item) => {
-      if (item.id === id) {
-        const newQuantity = item.quantity + change;
-        return { ...item, quantity: newQuantity > 0 ? newQuantity : 1 };
+      if (!user) {
+        // Redirect to login with return URL
+        router.push("/auth/login?redirect=/checkout");
+      } else {
+        // User is logged in, proceed to checkout
+        router.push("/checkout");
       }
-      return item;
-    });
-    setCartItems(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
+    } catch (error) {
+      console.error("Error checking authentication:", error);
+      router.push("/auth/login?redirect=/checkout");
+    } finally {
+      setIsChecking(false);
+    }
   };
-
-  // Remove item
-  const removeItem = (id: string) => {
-    const newCart = cartItems.filter((item) => item.id !== id);
-    setCartItems(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-  };
-
-  const calculateTotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-900">Loading cart...</p>
-      </div>
-    );
-  }
 
   return (
       <div className="min-h-screen bg-gray-50 py-8">
@@ -66,7 +51,7 @@ export default function CartPage() {
             <h1 className="text-4xl font-bold text-gray-900">Shopping Cart</h1>
           </div>
 
-          {cartItems.length === 0 ? (
+          {cart.length === 0 ? (
             <div className="bg-white rounded-lg shadow-md p-12 text-center">
               <ShoppingCart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">
@@ -86,7 +71,7 @@ export default function CartPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Cart items */}
               <div className="lg:col-span-2 space-y-4">
-                {cartItems.map((item) => (
+                {cart.map((item) => (
                   <div
                     key={item.id}
                     className="bg-white rounded-lg shadow-md p-6 flex flex-col sm:flex-row gap-4"
@@ -151,7 +136,7 @@ export default function CartPage() {
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between text-gray-900">
                       <span>Subtotal</span>
-                      <span>${calculateTotal().toFixed(2)}</span>
+                      <span>${cartTotal.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-gray-900">
                       <span>Shipping</span>
@@ -159,15 +144,16 @@ export default function CartPage() {
                     </div>
                     <div className="border-t pt-3 flex justify-between text-lg font-bold text-gray-900">
                       <span>Total</span>
-                      <span>${calculateTotal().toFixed(2)}</span>
+                      <span>${cartTotal.toFixed(2)}</span>
                     </div>
                   </div>
-                  <Link
-                    href="/checkout"
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  <button
+                    onClick={handleCheckout}
+                    disabled={isChecking}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    Proceed to Checkout
-                  </Link>
+                    {isChecking ? "Checking..." : "Proceed to Checkout"}
+                  </button>
                 </div>
               </div>
             </div>
