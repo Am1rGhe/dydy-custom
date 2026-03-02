@@ -34,9 +34,17 @@ export default async function ShopPage() {
               >
                 {/* Product image */}
                 <div className="w-full h-64 bg-gray-200 flex items-center justify-center relative overflow-hidden">
-                  <div className="text-gray-400 text-4xl font-bold">
-                    {product.name.charAt(0)}
-                  </div>
+                  {product.image_url ? (
+                    <img
+                      src={product.image_url}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-gray-400 text-4xl font-bold">
+                      {product.name.charAt(0)}
+                    </div>
+                  )}
                   {product.featured && (
                     <span className="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">
                       Featured
