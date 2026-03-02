@@ -126,6 +126,22 @@ export default function LoginPage() {
             </div>
           </div>
 
+          {/* Forgot password link */}
+          <div className="flex items-center justify-end">
+            <Link
+              href={
+                redirectTo && redirectTo !== "/"
+                  ? `/auth/forgot-password?redirect=${encodeURIComponent(
+                      redirectTo
+                    )}`
+                  : "/auth/forgot-password"
+              }
+              className="text-sm font-semibold text-red-600 hover:text-red-700"
+            >
+              Forgot your password?
+            </Link>
+          </div>
+
           {/* Submit button */}
           <button
             type="submit"
