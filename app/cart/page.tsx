@@ -98,7 +98,7 @@ export default function CartPage() {
 
                     {/* Quantity controls */}
                     <div className="flex items-center gap-4">
-                      <div className="flex items-center border-2 border-gray-300 rounded-lg">
+                      <div className="flex items-center border-2 border-gray-900 rounded-lg">
                         <button
                           onClick={() => updateQuantity(item.id, -1)}
                           className="p-2 hover:bg-gray-100 transition-colors"

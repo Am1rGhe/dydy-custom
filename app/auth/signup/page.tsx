@@ -117,7 +117,7 @@ export default function SignupPage() {
                   {...register("name")}
                   id="name"
                   type="text"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
                   placeholder="John Doe"
                 />
               </div>
@@ -142,7 +142,7 @@ export default function SignupPage() {
                   {...register("email")}
                   id="email"
                   type="email"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
                   placeholder="you@example.com"
                 />
               </div>
@@ -167,7 +167,7 @@ export default function SignupPage() {
                   type="password"
                   {...register("password")}
                   id="password"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
                   placeholder="Enter your password"
                 />
               </div>
@@ -192,7 +192,7 @@ export default function SignupPage() {
                   type="password"
                   {...register("confirmPassword")}
                   id="confirmPassword"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
                   placeholder="Confirm your password"
                 />
               </div>

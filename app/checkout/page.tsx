@@ -217,7 +217,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("fullName")}
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="John Doe"
                   />
                   {errors.fullName && (
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("email")}
                     type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="john@example.com"
                   />
                   {errors.email && (
@@ -253,7 +253,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("phone")}
                     type="tel"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="+1 234 567 8900"
                   />
                   {errors.phone && (
@@ -271,7 +271,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("address")}
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="123 Main St"
                   />
                   {errors.address && (
@@ -289,7 +289,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("city")}
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="New York"
                   />
                   {errors.city && (
@@ -307,7 +307,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("state")}
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="NY"
                   />
                   {errors.state && (
@@ -325,7 +325,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("zipCode")}
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="10001"
                   />
                   {errors.zipCode && (
@@ -343,7 +343,7 @@ export default function CheckoutPage() {
                   <input
                     {...register("country")}
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition placeholder:text-gray-500"
+                    className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
                     placeholder="United States"
                   />
                   {errors.country && (
