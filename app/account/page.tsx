@@ -1,7 +1,7 @@
 "use client";
 
 import { createClientSupabase } from "@/lib/supabase/client";
-import { User, Package, Loader2 } from "lucide-react";
+import { User, Package, Settings, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -29,7 +29,7 @@ export default function AccountPage() {
 
         setUser(currentUser);
 
-        // Get orders count
+        // get orders count
         const { count } = await supabase
           .from("orders")
           .select("*", { count: "exact", head: true })
@@ -94,6 +94,13 @@ export default function AccountPage() {
                 >
                   <Package className="w-5 h-5" />
                   Orders
+                </Link>
+                <Link
+                  href="/account/settings"
+                  className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-red-600 rounded-lg transition-colors"
+                >
+                  <Settings className="w-5 h-5" />
+                  Settings
                 </Link>
               </nav>
             </div>
