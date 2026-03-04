@@ -17,17 +17,23 @@ export const metadata: Metadata = {
   description: defaultDescription,
   keywords: ["custom clothing", "fashion", "clothing", "Dydy Custom", "custom design"],
   authors: [{ name: siteName }],
+  icons: {
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName,
     title: siteName,
     description: defaultDescription,
+    images: [{ url: "/logo.jpg", alt: siteName }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: defaultDescription,
+    images: ["/logo.jpg"],
   },
   robots: {
     index: true,
