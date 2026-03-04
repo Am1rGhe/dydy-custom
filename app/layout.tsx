@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   keywords: ["custom clothing", "fashion", "clothing", "Dydy Custom", "custom design"],
   authors: [{ name: siteName }],
   icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
+    icon: "/icon.jpg",
+    apple: "/icon.jpg",
   },
   openGraph: {
     type: "website",
@@ -48,6 +48,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.jpg" type="image/jpeg" sizes="any" />
+        <link rel="apple-touch-icon" href="/logo.jpg" />
+      </head>
       <body>
         <Providers>
           <Header />
