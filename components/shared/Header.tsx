@@ -1,5 +1,5 @@
 "use client";
-import { User, Menu, LogOut, Package, Settings, Shield } from "lucide-react";
+import { User, LogOut, Package, Settings, Shield } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -74,7 +74,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white border-b border-gray-100 fixed top-0 left-0 right-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -189,10 +189,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 hover:bg-red-50 rounded-full transition-colors">
-              <Menu className="w-6 h-6 text-gray-700" />
-            </button>
           </div>
         </div>
       </div>
