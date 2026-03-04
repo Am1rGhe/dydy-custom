@@ -1,5 +1,17 @@
 import Link from "next/link";
 import { Shirt, Heart, Sparkles } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Dydy Custom and our passion for custom-designed clothing crafted for creators.",
+  openGraph: {
+    title: "About | Dydy Custom",
+    description:
+      "Learn about Dydy Custom and our passion for custom-designed clothing crafted for creators.",
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -14,7 +26,7 @@ export default function AboutPage() {
                 Crafted for creators
               </p>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-                About DydyShop
+                About Dydy Custom
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 max-w-2xl">
                 Your one-stop shop for custom-designed clothing. Create unique
@@ -53,7 +65,7 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-sm p-6 lg:p-8">
             <p className="text-gray-900 leading-relaxed mb-4">
-              DydyShop was born from a simple idea: everyone deserves to wear
+              Dydy Custom was born from a simple idea: everyone deserves to wear
               clothing that reflects who they are. We believe that fashion
               should be personal, accessible, and fun.
             </p>
@@ -122,7 +134,7 @@ export default function AboutPage() {
                 </h2>
                 <p className="text-sm lg:text-base text-gray-300">
                   Explore our collection and discover pieces that are made for you.
-                  From everyday essentials to statement designs, DydyShop has you covered.
+                  From everyday essentials to statement designs, Dydy Custom has you covered.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">

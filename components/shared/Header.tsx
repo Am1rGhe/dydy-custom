@@ -82,7 +82,7 @@ export default function Header() {
             href="/"
             className="text-2xl font-bold text-red-600 hover:text-red-700 transition-colors"
           >
-            DydyShop
+            Dydy Custom
           </Link>
 
           {/* Navigation links in the middle */}

@@ -1,5 +1,15 @@
 import { createServerSupabase } from "@/lib/supabase/server";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shop",
+  description: "Discover our collection of custom-designed clothing and accessories.",
+  openGraph: {
+    title: "Shop | Dydy Custom",
+    description: "Discover our collection of custom-designed clothing and accessories.",
+  },
+};
 
 export default async function ShopPage() {
   const supabase = await createServerSupabase();

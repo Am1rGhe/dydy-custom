@@ -1,5 +1,17 @@
 import Link from "next/link";
 import { ShoppingBag, LogIn, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Your one-stop shop for custom-designed clothing. Create unique styles that express your personality.",
+  openGraph: {
+    title: "Dydy Custom – Custom Clothing",
+    description:
+      "Your one-stop shop for custom-designed clothing. Create unique styles that express your personality.",
+  },
+};
 
 export default function Home() {
   return (
@@ -13,7 +25,7 @@ export default function Home() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
             Welcome to{" "}
             <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
-              DydyShop
+              Dydy Custom
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-xl mx-auto leading-relaxed">

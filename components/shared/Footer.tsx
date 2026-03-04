@@ -14,7 +14,7 @@ export default function Footer() {
               href="/"
               className="text-2xl font-bold text-red-600 mb-4 inline-block"
             >
-              DydyShop
+              Dydy Custom
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your one-stop shop for custom-designed clothing. Create unique
@@ -92,7 +92,7 @@ export default function Footer() {
         {/* Bottom Section - Copyright */}
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-500 text-sm">
-            © 2026 DydyShop. Designed by{" "}
+            © 2026 Dydy Custom. Designed by{" "}
             <a 
               href="https://www.amirghouari.dev" 
               target="_blank" 

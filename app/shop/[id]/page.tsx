@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/shop/AddToCartButton";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{
@@ -10,27 +11,53 @@ interface PageProps {
   }>;
 }
 
-export default async function ProductDetailPage({ params }: PageProps) {
-  // add params 
-  const { id } = await params;
-  
-  // Create server supabase
+async function getProduct(id: string) {
   const supabase = await createServerSupabase();
-
-  // Fetch the product by its id
-  const { data: product, error } = await supabase
+  const { data, error } = await supabase
     .from("products")
     .select("*, categories(name, slug)")
     .eq("id", id)
     .single();
-  // Handle not found error :
-  if (error || !product) notFound();
+  if (error || !data) return null;
+  return data;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const product = await getProduct(id);
+  if (!product) {
+    return { title: "Product not found" };
+  }
+  const title = product.name;
+  const description =
+    product.description ||
+    `${product.name} – $${product.base_price}. ${product.categories?.name ?? "Shop"} at Dydy Custom.`;
+  const image = product.image_url ?? undefined;
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} | Dydy Custom`,
+      description,
+      images: image ? [{ url: image, alt: product.name }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Dydy Custom`,
+      description,
+      images: image ? [image] : undefined,
+    },
+  };
+}
+
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  const product = await getProduct(id);
+  if (!product) notFound();
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* GO back button  */}
-        {/* redirect to /shop */}
         <Link
           href="/shop"
           className="inline-flex items-center text-gray-600 hover:text-red-600 mb-6 transition-colors"
@@ -40,7 +67,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg shadow-md p-6 lg:p-8">
-          {/* Product's image */}
           <div className="w-full">
             <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
               {product.image_url ? (

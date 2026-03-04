@@ -14,7 +14,7 @@ export default function ContactPage() {
               Get in touch
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-              Contact DydyShop
+              Contact Dydy Custom
             </h1>
             <p className="text-lg lg:text-xl text-gray-600 max-w-2xl">
               Questions about an order, sizing, or a custom design? Send us a
@@ -126,7 +126,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-700">support@dydyshop.com</p>
+                    <p className="text-gray-700">support@dydycustom.com</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
