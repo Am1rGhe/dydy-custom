@@ -42,11 +42,18 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg shadow-md p-6 lg:p-8">
           {/* Product's image */}
           <div className="w-full">
-            {/*  Leaving a character for now, gonna be fixed later */}
             <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
-              <div className="text-gray-400 text-6xl font-bold">
-                {product.name.charAt(0)}
-              </div>
+              {product.image_url ? (
+                <img
+                  src={product.image_url}
+                  alt={product.name}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              ) : (
+                <div className="text-gray-400 text-6xl font-bold">
+                  {product.name.charAt(0)}
+                </div>
+              )}
               {product.featured && (
                 <span className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded">
                   Featured
