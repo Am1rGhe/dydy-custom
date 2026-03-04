@@ -13,7 +13,7 @@ interface PageProps {
   }>;
 }
 
-export default function OrderSuccessPage({ params }: PageProps) {
+function OrderSuccessContent({ params }: PageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
