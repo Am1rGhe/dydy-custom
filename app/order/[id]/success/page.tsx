@@ -5,7 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 import { CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 interface PageProps {
   params: Promise<{
@@ -200,5 +200,17 @@ export default function OrderSuccessPage({ params }: PageProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function OrderSuccessPage({ params }: PageProps) {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <Loader2 className="w-8 h-8 animate-spin text-red-600" />
+      </div>
+    }>
+      <OrderSuccessContent params={params} />
+    </Suspense>
   );
 }
