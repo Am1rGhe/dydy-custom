@@ -1,5 +1,5 @@
 "use client";
-import { User, Menu, LogOut, Package, Settings } from "lucide-react";
+import { User, Menu, LogOut, Package, Settings, Shield } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -9,6 +9,7 @@ import CartIcon from "./CartIcon";
 export default function Header() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -19,6 +20,13 @@ export default function Header() {
         data: { user },
       } = await supabase.auth.getUser();
       setUser(user);
+      if (user) {
+        const res = await fetch("/api/admin/check");
+        const { isAdmin } = await res.json();
+        setIsAdmin(isAdmin);
+      } else {
+        setIsAdmin(false);
+      }
     };
 
     checkUser();
@@ -27,8 +35,15 @@ export default function Header() {
     const supabase = createClientSupabase();
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        const res = await fetch("/api/admin/check");
+        const { isAdmin } = await res.json();
+        setIsAdmin(isAdmin);
+      } else {
+        setIsAdmin(false);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -143,6 +158,16 @@ export default function Header() {
                         <Settings className="w-5 h-5" />
                         Settings
                       </Link>
+                      {isAdmin && (
+                        <Link
+                          href="/admin"
+                          onClick={() => setIsDropdownOpen(false)}
+                          className="flex items-center gap-4 px-6 py-3 text-base text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        >
+                          <Shield className="w-5 h-5" />
+                          Admin
+                        </Link>
+                      )}
                       <div className="border-t border-gray-200 my-2"></div>
                       <button
                         onClick={handleLogout}
