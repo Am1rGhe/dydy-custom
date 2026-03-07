@@ -126,10 +126,10 @@ export default function OrderDetailPage({ params }: PageProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 animate-spin text-red-600 mx-auto mb-4" />
-          <p className="text-gray-900">Loading order details...</p>
+          <p className="text-white">Loading order details...</p>
         </div>
       </div>
     );
@@ -137,9 +137,9 @@ export default function OrderDetailPage({ params }: PageProps) {
 
   if (error || !order) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-bold text-white mb-4">
             {error || "Order not found"}
           </h2>
           <Link
@@ -154,23 +154,23 @@ export default function OrderDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-transparent py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <Link
             href="/account/orders"
-            className="inline-flex items-center text-gray-900 hover:text-red-600 mb-4 transition-colors"
+            className="inline-flex items-center text-white hover:text-amber-400 mb-4 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Orders
           </Link>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900">
+              <h1 className="text-4xl font-bold text-white">
                 Order {order.order_number}
               </h1>
-              <p className="text-gray-600 mt-2">
+              <p className="text-neutral-400 mt-2">
                 Placed on {format(new Date(order.created_at), "MMMM dd, yyyy 'at' h:mm a")}
               </p>
             </div>
@@ -197,8 +197,8 @@ export default function OrderDetailPage({ params }: PageProps) {
           {/* Order Items */}
           <div className="lg:col-span-2 space-y-6">
             {/* Order Items List */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Order Items
               </h2>
               <div className="space-y-4">
@@ -208,40 +208,40 @@ export default function OrderDetailPage({ params }: PageProps) {
                       key={item.id}
                       className="flex items-center gap-4 pb-4 border-b border-gray-200 last:border-0 last:pb-0"
                     >
-                      <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Package className="w-8 h-8 text-gray-400" />
+                      <div className="w-16 h-16 bg-neutral-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Package className="w-8 h-8 text-neutral-500" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-white">
                           {item.product_name}
                         </h3>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-neutral-400">
                           Size: {item.size} × Quantity: {item.quantity}
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold text-gray-900">
+                        <p className="font-semibold text-white">
                           ${(item.price * item.quantity).toFixed(2)}
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-neutral-400">
                           ${item.price.toFixed(2)} each
                         </p>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <p className="text-gray-600">No items found</p>
+                  <p className="text-neutral-400">No items found</p>
                 )}
               </div>
             </div>
 
             {/* Shipping Address */}
             {order.shipping_address && (
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+              <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6">
+                <h2 className="text-xl font-bold text-white mb-4">
                   Shipping Address
                 </h2>
-                <div className="text-gray-900 space-y-1">
+                <div className="text-white space-y-1">
                   <p className="font-semibold">
                     {order.shipping_address.fullName}
                   </p>
@@ -251,10 +251,10 @@ export default function OrderDetailPage({ params }: PageProps) {
                     {order.shipping_address.zipCode}
                   </p>
                   <p>{order.shipping_address.country}</p>
-                  <p className="mt-2 text-sm text-gray-600">
+                  <p className="mt-2 text-sm text-neutral-400">
                     Email: {order.shipping_address.email}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-neutral-400">
                     Phone: {order.shipping_address.phone}
                   </p>
                 </div>
@@ -264,28 +264,28 @@ export default function OrderDetailPage({ params }: PageProps) {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6 sticky top-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Order Summary
               </h2>
               <div className="space-y-3 mb-6">
-                <div className="flex justify-between text-gray-900">
+                <div className="flex justify-between text-white">
                   <span>Subtotal</span>
                   <span>${order.subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-gray-900">
+                <div className="flex justify-between text-white">
                   <span>Shipping</span>
                   <span>
                     {order.shipping_cost === 0 ? "Free" : `$${order.shipping_cost.toFixed(2)}`}
                   </span>
                 </div>
                 {order.tax > 0 && (
-                  <div className="flex justify-between text-gray-900">
+                  <div className="flex justify-between text-white">
                     <span>Tax</span>
                     <span>${order.tax.toFixed(2)}</span>
                   </div>
                 )}
-                <div className="border-t pt-3 flex justify-between text-lg font-bold text-gray-900">
+                <div className="border-t pt-3 flex justify-between text-lg font-bold text-white">
                   <span>Total</span>
                   <span>${order.total.toFixed(2)}</span>
                 </div>

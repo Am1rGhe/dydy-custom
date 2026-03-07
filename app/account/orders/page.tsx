@@ -94,7 +94,7 @@ export default function OrdersPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 animate-spin text-red-600 mx-auto mb-4" />
           <p className="text-gray-900">Loading your orders...</p>
@@ -105,7 +105,7 @@ export default function OrdersPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">{error}</h2>
           <Link
@@ -120,7 +120,7 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-transparent py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -136,8 +136,8 @@ export default function OrdersPage() {
 
         {/* Orders List */}
         {orders.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-12 text-center">
-            <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+          <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-12 text-center">
+            <Package className="w-16 h-16 text-neutral-500 mx-auto mb-4" />
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">
               No orders yet
             </h2>
@@ -157,7 +157,7 @@ export default function OrdersPage() {
               <Link
                 key={order.id}
                 href={`/account/orders/${order.id}`}
-                className="block bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+                className="block bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   {/* Order info */}
@@ -181,12 +181,12 @@ export default function OrdersPage() {
                         {order.payment_status}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-1">
+                    <p className="text-sm text-neutral-400 mb-1">
                       {order.shipping_address?.fullName && (
                         <>Ship to: {order.shipping_address.fullName}</>
                       )}
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-neutral-400">
                       {format(new Date(order.created_at), "MMMM dd, yyyy 'at' h:mm a")}
                     </p>
                   </div>
@@ -196,7 +196,7 @@ export default function OrdersPage() {
                     <p className="text-2xl font-bold text-gray-900">
                       ${order.total.toFixed(2)}
                     </p>
-                    <p className="text-sm text-gray-600 mt-1">View Details →</p>
+                    <p className="text-sm text-neutral-400 mt-1">View Details →</p>
                   </div>
                 </div>
               </Link>

@@ -11,12 +11,12 @@ export default async function AdminCategoriesPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Categories</h1>
+      <h1 className="text-3xl font-bold text-white mb-8">Categories</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <CategoriesForm />
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">
+        <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6">
+          <h2 className="text-lg font-bold text-white mb-4">
             Existing categories
           </h2>
           {categories && categories.length > 0 ? (
@@ -24,15 +24,15 @@ export default async function AdminCategoriesPage() {
               {categories.map((c) => (
                 <li
                   key={c.id}
-                  className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
+                  className="flex items-center justify-between py-2 border-b border-neutral-800 last:border-0"
                 >
-                  <span className="font-medium text-gray-900">{c.name}</span>
-                  <span className="text-sm text-gray-500">{c.slug}</span>
+                  <span className="font-medium text-white">{c.name}</span>
+                  <span className="text-sm text-neutral-400">{c.slug}</span>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-gray-500">No categories yet.</p>
+            <p className="text-neutral-400">No categories yet.</p>
           )}
         </div>
       </div>

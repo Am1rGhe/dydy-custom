@@ -62,10 +62,10 @@ function ForgotPasswordContent() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-transparent py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Forgot password</h2>
+          <h2 className="text-3xl font-bold text-white">Forgot password</h2>
           <p className="mt-2 text-gray-600">
             Enter your email and we&apos;ll send you a reset link.
           </p>
@@ -73,7 +73,7 @@ function ForgotPasswordContent() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mt-8 space-y-6 bg-white p-8 rounded-lg shadow-md"
+          className="mt-8 space-y-6 bg-neutral-900 p-8 rounded-2xl border border-neutral-800 shadow-xl"
         >
           {success && (
             <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
@@ -102,7 +102,7 @@ function ForgotPasswordContent() {
                   {...register("email")}
                   id="email"
                   type="email"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
                   placeholder="you@example.com"
                 />
               </div>
@@ -117,7 +117,7 @@ function ForgotPasswordContent() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full bg-amber-500 hover:bg-amber-400 text-black text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -153,7 +153,7 @@ function ForgotPasswordContent() {
 export default function ForgotPasswordPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-transparent">
         <Loader2 className="w-8 h-8 animate-spin text-red-600" />
       </div>
     }>

@@ -56,19 +56,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
   if (!product) notFound();
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/shop"
-          className="inline-flex items-center text-gray-600 hover:text-red-600 mb-6 transition-colors"
+          className="inline-flex items-center text-sm font-medium text-neutral-400 hover:text-amber-400 mb-8 transition-colors duration-200"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Shop
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg shadow-md p-6 lg:p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6 lg:p-10">
           <div className="w-full">
-            <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center relative overflow-hidden">
+            <div className="w-full aspect-square max-h-[28rem] bg-neutral-800 rounded-2xl flex items-center justify-center relative overflow-hidden">
               {product.image_url ? (
                 <img
                   src={product.image_url}
@@ -76,49 +76,46 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   className="w-full h-full object-cover rounded-lg"
                 />
               ) : (
-                <div className="text-gray-400 text-6xl font-bold">
+                <div className="text-neutral-500 text-6xl font-semibold">
                   {product.name.charAt(0)}
                 </div>
               )}
               {product.featured && (
-                <span className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded">
+                <span className="absolute top-4 right-4 bg-amber-500 text-black text-xs font-medium px-3 py-1.5 rounded-full">
                   Featured
                 </span>
               )}
             </div>
           </div>
 
-          {/* Product info */}
           <div className="flex flex-col">
             <div className="mb-4">
-              <span className="text-sm text-red-600 font-semibold">
+              <span className="text-sm text-amber-400 font-semibold">
                 {product.categories?.name || "Uncategorized"}
               </span>
             </div>
 
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">
               {product.name}
             </h1>
 
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-neutral-400 mb-6 leading-relaxed">
               {product.description || "No description available."}
             </p>
 
-            {/* Price */}
             <div className="mb-6">
-              <span className="text-3xl font-bold text-gray-900">
+              <span className="text-3xl font-bold text-amber-400">
                 ${product.base_price}
               </span>
             </div>
 
-            {/* Stock status */}
             <div className="mb-6">
               {product.in_stock ? (
-                <span className="inline-block bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded">
+                <span className="inline-block bg-emerald-500/20 text-emerald-400 text-sm font-semibold px-3 py-1 rounded-lg">
                   In Stock
                 </span>
               ) : (
-                <span className="inline-block bg-red-100 text-red-800 text-sm font-semibold px-3 py-1 rounded">
+                <span className="inline-block bg-amber-500/20 text-amber-400 text-sm font-semibold px-3 py-1 rounded-lg">
                   Out of Stock
                 </span>
               )}

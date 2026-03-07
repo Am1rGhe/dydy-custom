@@ -1,8 +1,15 @@
 import Header from "@/components/shared/Header";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/shared/Footer";
 import Providers from "@/components/providers/CartProvider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans-app",
+});
 
 const siteName = "Dydy Custom";
 const defaultDescription =
@@ -18,8 +25,8 @@ export const metadata: Metadata = {
   keywords: ["custom clothing", "fashion", "clothing", "Dydy Custom", "custom design"],
   authors: [{ name: siteName }],
   icons: {
-    icon: "/icon.jpg",
-    apple: "/icon.jpg",
+    icon: { url: "/favicon.png", type: "image/png" },
+    apple: "/apple-icon",
   },
   openGraph: {
     type: "website",
@@ -48,14 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/logo.jpg" type="image/jpeg" sizes="any" />
-        <link rel="apple-touch-icon" href="/logo.jpg" />
-      </head>
-      <body>
+      <body className={inter.variable}>
         <Providers>
           <Header />
-          {children}
+          <main className="pt-20">{children}</main>
           <Footer/>
         </Providers>
       </body>

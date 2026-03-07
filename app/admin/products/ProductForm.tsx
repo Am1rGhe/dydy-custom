@@ -77,16 +77,16 @@ export default function ProductForm({
     <form
       onSubmit={handleSubmit}
       encType="multipart/form-data"
-      className="bg-white rounded-lg shadow-md p-6 lg:p-8 space-y-6 max-w-2xl"
+      className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6 lg:p-8 space-y-6 max-w-2xl"
     >
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        <div className="bg-amber-500/10 border border-amber-500/30 text-amber-800 px-4 py-3 rounded-xl">
           {error}
         </div>
       )}
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-white mb-2">
           Name *
         </label>
         <input
@@ -94,26 +94,26 @@ export default function ProductForm({
           type="text"
           required
           defaultValue={product?.name}
-          className="w-full px-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 outline-none transition"
+          className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
           placeholder="Product name"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-white mb-2">
           Description
         </label>
         <textarea
           name="description"
           rows={3}
           defaultValue={product?.description || ""}
-          className="w-full px-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 outline-none transition resize-none"
+          className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition resize-none"
           placeholder="Product description"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-white mb-2">
           Price *
         </label>
         <input
@@ -123,29 +123,29 @@ export default function ProductForm({
           min="0"
           required
           defaultValue={product?.base_price}
-          className="w-full px-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 outline-none transition"
+          className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
           placeholder="0.00"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-white mb-2">
           Product Image
         </label>
         <input
           name="image"
           type="file"
           accept="image/*"
-          className="w-full px-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-red-50 file:text-red-600 file:font-semibold"
+          className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-amber-500/10 file:text-amber-700 file:font-semibold"
         />
         {product?.image_url && (
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-neutral-600">
             Current image:{" "}
             <a
               href={product.image_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-600 hover:underline"
+              className="text-amber-700 hover:text-amber-600"
             >
               View
             </a>
@@ -155,7 +155,7 @@ export default function ProductForm({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-white mb-2">
           Category *
         </label>
         <select
@@ -163,7 +163,7 @@ export default function ProductForm({
           required
           value={selectedCategoryId}
           onChange={(e) => setSelectedCategoryId(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 outline-none transition"
+          className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
         >
           <option value="">Select category</option>
           {categories.map((c) => (
@@ -175,14 +175,14 @@ export default function ProductForm({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <label className="block text-sm font-semibold text-white mb-2">
           Sizes {isShoes ? "(Canadian)" : ""}
         </label>
         <div className="flex flex-wrap gap-2">
           {sizeOptions.map((size) => (
             <label
               key={size}
-              className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg cursor-pointer transition-colors has-[:checked]:border-red-600 has-[:checked]:bg-red-50 has-[:checked]:text-red-600 border-gray-900 hover:border-red-600"
+              className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg cursor-pointer transition-colors has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/20 has-[:checked]:text-amber-400 border-neutral-600 hover:border-amber-500"
             >
               <input
                 name="sizes"
@@ -196,7 +196,7 @@ export default function ProductForm({
           ))}
         </div>
         {!selectedCategoryId && (
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-neutral-500">
             Select a category to see available sizes
           </p>
         )}
@@ -209,9 +209,9 @@ export default function ProductForm({
             type="checkbox"
             defaultChecked={product?.in_stock ?? true}
             value="true"
-            className="rounded border-gray-900"
+            className="rounded border-neutral-400"
           />
-          <span className="text-gray-900">In stock</span>
+          <span className="text-white">In stock</span>
         </label>
         <label className="flex items-center gap-2 cursor-pointer">
           <input
@@ -219,9 +219,9 @@ export default function ProductForm({
             type="checkbox"
             defaultChecked={product?.featured ?? false}
             value="true"
-            className="rounded border-gray-900"
+            className="rounded border-neutral-400"
           />
-          <span className="text-gray-900">Featured</span>
+          <span className="text-white">Featured</span>
         </label>
       </div>
 
@@ -229,14 +229,14 @@ export default function ProductForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors disabled:opacity-50"
+          className="bg-black hover:bg-neutral-800 text-amber-400 font-semibold py-2 px-6 rounded-xl transition-colors disabled:opacity-50"
         >
           {isSubmitting ? "Saving..." : product ? "Update" : "Create"}
         </button>
         <button
           type="button"
           onClick={() => router.back()}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 px-6 rounded-lg transition-colors"
+          className="bg-neutral-200 hover:bg-neutral-300 text-white font-semibold py-2 px-6 rounded-xl transition-colors"
         >
           Cancel
         </button>

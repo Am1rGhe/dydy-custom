@@ -40,44 +40,44 @@ export default async function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Orders</h1>
+      <h1 className="text-3xl font-bold text-white mb-8">Orders</h1>
 
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl overflow-hidden">
+        <table className="min-w-full divide-y divide-neutral-800">
+          <thead className="bg-neutral-800">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase">
+              <th className="px-4 py-3 text-left text-xs font-semibold text-neutral-200 uppercase">
                 Order
               </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase">
+              <th className="px-4 py-3 text-left text-xs font-semibold text-neutral-200 uppercase">
                 Customer
               </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase">
+              <th className="px-4 py-3 text-left text-xs font-semibold text-neutral-200 uppercase">
                 Total
               </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase">
+              <th className="px-4 py-3 text-left text-xs font-semibold text-neutral-200 uppercase">
                 Status
               </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-900 uppercase">
+              <th className="px-4 py-3 text-left text-xs font-semibold text-neutral-200 uppercase">
                 Payment
               </th>
-              <th className="px-4 py-3 text-right text-xs font-semibold text-gray-900 uppercase">
+              <th className="px-4 py-3 text-right text-xs font-semibold text-neutral-200 uppercase">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-neutral-800 bg-neutral-900">
             {orders && orders.length > 0 ? (
               orders.map((order) => (
-                <tr key={order.id} className="hover:bg-gray-50">
+                <tr key={order.id} className="hover:bg-neutral-800">
                   <td className="px-4 py-3">
                     <Link
                       href={`/admin/orders/${order.id}`}
-                      className="font-medium text-red-600 hover:text-red-700"
+                      className="font-medium text-amber-700 hover:text-amber-600"
                     >
                       {order.order_number}
                     </Link>
-                    <p className="text-xs text-gray-500 mt-0.5">
+                    <p className="text-xs text-neutral-500 mt-0.5">
                       {format(new Date(order.created_at), "MMM d, yyyy")}
                     </p>
                   </td>
@@ -115,7 +115,7 @@ export default async function AdminOrdersPage() {
               ))
             ) : (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                <td colSpan={6} className="px-4 py-8 text-center text-neutral-600">
                   No orders yet.
                 </td>
               </tr>

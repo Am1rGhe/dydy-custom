@@ -62,78 +62,72 @@ function LoginContent() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        {/* Header */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
-          <p className="mt-2 text-gray-600">Sign in to your account</p>
+          <h2 className="text-3xl font-bold text-white">Welcome Back</h2>
+          <p className="mt-2 text-neutral-400">Sign in to your account</p>
         </div>
 
-        {/* Login form */}
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mt-8 space-y-6 bg-white p-8 rounded-lg shadow-md"
+          className="mt-8 space-y-6 bg-neutral-900 p-8 rounded-2xl border border-neutral-800 shadow-xl"
         >
-          {/* Display error */}
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+            <div className="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-3 rounded-xl">
               {error}
             </div>
           )}
           <div className="space-y-4">
-            {/* Email input field */}
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-neutral-200 mb-2"
               >
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 w-5 h-5" />
                 <input
                   {...register("email")}
                   id="email"
                   type="email"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
                   placeholder="you@example.com"
                 />
               </div>
               {errors.email && (
-                <p className="mt-1 text-sm text-red-600">
+                <p className="mt-1 text-sm text-amber-400">
                   {errors.email.message}
                 </p>
               )}
             </div>
 
-            {/* Password input field */}
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-neutral-200 mb-2"
               >
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 w-5 h-5" />
                 <input
                   type="password"
                   {...register("password")}
                   id="password"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-900 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition"
+                  className="w-full pl-10 pr-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
                   placeholder="Enter your password"
                 />
               </div>
               {errors.password && (
-                <p className="mt-1 text-sm text-red-600">
+                <p className="mt-1 text-sm text-amber-400">
                   {errors.password.message}
                 </p>
               )}
             </div>
           </div>
 
-          {/* Forgot password link */}
           <div className="flex items-center justify-end">
             <Link
               href={
@@ -143,17 +137,16 @@ function LoginContent() {
                     )}`
                   : "/auth/forgot-password"
               }
-              className="text-sm font-semibold text-red-600 hover:text-red-700"
+              className="text-sm font-semibold text-amber-400 hover:text-amber-300"
             >
               Forgot your password?
             </Link>
           </div>
 
-          {/* Submit button */}
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full bg-amber-500 hover:bg-amber-400 text-black font-semibold py-3 px-4 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -167,17 +160,17 @@ function LoginContent() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-gray-200" />
+              <span className="w-full border-t border-neutral-700" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">or</span>
+              <span className="px-2 bg-neutral-900 text-neutral-500">or</span>
             </div>
           </div>
           <button
             type="button"
             onClick={handleGoogleSignIn}
             disabled={googleLoading}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 font-medium transition-colors disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 border-2 border-neutral-600 rounded-xl text-white bg-neutral-800 hover:bg-neutral-700 font-medium transition-colors disabled:opacity-50"
           >
             {googleLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -206,13 +199,12 @@ function LoginContent() {
             )}
           </button>
 
-          {/* Sign up link */}
           <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Don't have an account?{" "}
+            <p className="text-sm text-neutral-400">
+              Don&apos;t have an account?{" "}
               <Link
                 href={redirectTo !== "/" ? `/auth/signup?redirect=${redirectTo}` : "/auth/signup"}
-                className="text-red-600 hover:text-red-700 font-semibold"
+                className="text-amber-400 hover:text-amber-300 font-semibold"
               >
                 Sign up
               </Link>
@@ -227,8 +219,8 @@ function LoginContent() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Loader2 className="w-8 h-8 animate-spin text-red-600" />
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
       </div>
     }>
       <LoginContent />

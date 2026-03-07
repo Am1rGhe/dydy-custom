@@ -117,10 +117,10 @@ export default function SettingsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-12 h-12 animate-spin text-red-600 mx-auto mb-4" />
-          <p className="text-gray-900">Loading...</p>
+          <p className="text-white">Loading...</p>
         </div>
       </div>
     );
@@ -131,20 +131,20 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-transparent py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
+            <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6 sticky top-4">
               <div className="mb-6">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <User className="w-8 h-8 text-red-600" />
                 </div>
-                <h2 className="text-lg font-bold text-gray-900 text-center">
+                <h2 className="text-lg font-bold text-white text-center">
                   {user.user_metadata?.name || user.email?.split("@")[0] || "User"}
                 </h2>
-                <p className="text-sm text-gray-600 text-center mt-1">
+                <p className="text-sm text-neutral-400 text-center mt-1">
                   {user.email}
                 </p>
               </div>
@@ -152,21 +152,21 @@ export default function SettingsPage() {
               <nav className="space-y-2">
                 <Link
                   href="/account"
-                  className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-red-600 rounded-lg transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 text-neutral-300 hover:bg-transparent hover:text-amber-400 rounded-lg transition-colors"
                 >
                   <User className="w-5 h-5" />
                   Profile
                 </Link>
                 <Link
                   href="/account/orders"
-                  className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-red-600 rounded-lg transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 text-neutral-300 hover:bg-transparent hover:text-amber-400 rounded-lg transition-colors"
                 >
                   <Package className="w-5 h-5" />
                   Orders
                 </Link>
                 <Link
                   href="/account/settings"
-                  className="flex items-center gap-3 px-4 py-3 bg-red-50 text-red-600 rounded-lg font-medium"
+                  className="flex items-center gap-3 px-4 py-3 bg-amber-500/10 text-amber-400 rounded-lg font-medium"
                 >
                   <Settings className="w-5 h-5" />
                   Settings
@@ -177,14 +177,14 @@ export default function SettingsPage() {
 
           {/* Main Content */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-lg shadow-md p-6 lg:p-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-8">
+            <div className="bg-neutral-900 rounded-2xl border border-neutral-800 shadow-xl p-6 lg:p-8">
+              <h1 className="text-3xl font-bold text-white mb-8">
                 Account Settings
               </h1>
 
               {/* Profile Section */}
               <div className="mb-10">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl font-bold text-white mb-4">
                   Profile Information
                 </h2>
                 <form
@@ -197,18 +197,18 @@ export default function SettingsPage() {
                     </div>
                   )}
                   {profileError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    <div className="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-3 rounded">
                       {profileError}
                     </div>
                   )}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-neutral-300 mb-2">
                       Display Name
                     </label>
                     <input
                       {...registerProfile("name")}
                       type="text"
-                      className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
+                      className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
                       placeholder="Your name"
                     />
                     {profileErrors.name && (
@@ -219,7 +219,7 @@ export default function SettingsPage() {
                   </div>
                   <button
                     type="submit"
-                    className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                    className="bg-amber-500 hover:bg-amber-400 text-black text-white font-semibold py-2 px-6 rounded-lg transition-colors"
                   >
                     Update Profile
                   </button>
@@ -228,7 +228,7 @@ export default function SettingsPage() {
 
               {/* Password Section */}
               <div className="border-t pt-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl font-bold text-white mb-4">
                   Change Password
                 </h2>
                 <form
@@ -241,18 +241,18 @@ export default function SettingsPage() {
                     </div>
                   )}
                   {passwordError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    <div className="bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-3 rounded">
                       {passwordError}
                     </div>
                   )}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-neutral-300 mb-2">
                       New Password
                     </label>
                     <input
                       {...registerPassword("newPassword")}
                       type="password"
-                      className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
+                      className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
                       placeholder="Enter new password"
                     />
                     {passwordErrors.newPassword && (
@@ -262,13 +262,13 @@ export default function SettingsPage() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-neutral-300 mb-2">
                       Confirm New Password
                     </label>
                     <input
                       {...registerPassword("confirmPassword")}
                       type="password"
-                      className="w-full px-4 py-3 border border-gray-900 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-gray-900 placeholder:text-gray-700"
+                      className="w-full px-4 py-3 border border-neutral-700 rounded-xl bg-neutral-800 text-white placeholder-neutral-500 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
                       placeholder="Confirm new password"
                     />
                     {passwordErrors.confirmPassword && (
@@ -279,7 +279,7 @@ export default function SettingsPage() {
                   </div>
                   <button
                     type="submit"
-                    className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                    className="bg-amber-500 hover:bg-amber-400 text-black text-white font-semibold py-2 px-6 rounded-lg transition-colors"
                   >
                     Update Password
                   </button>

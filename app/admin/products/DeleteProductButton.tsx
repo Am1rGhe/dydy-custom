@@ -29,7 +29,7 @@ export default function DeleteProductButton({ productId, productName }: Props) {
     <button
       onClick={handleDelete}
       disabled={isDeleting}
-      className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors disabled:opacity-50"
+      className="p-2 text-neutral-600 hover:text-amber-700 hover:bg-amber-500/10 rounded-lg transition-colors disabled:opacity-50"
       title="Delete"
     >
       <Trash2 className="w-4 h-4" />

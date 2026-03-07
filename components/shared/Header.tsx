@@ -74,39 +74,34 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-gray-100 fixed top-0 left-0 right-0 z-50 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-amber-500/20 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-bold text-red-600 hover:text-red-700 transition-colors"
+            className="text-xl font-semibold tracking-tight text-white hover:text-amber-400 transition-colors duration-200"
           >
-            Dydy Custom
+            Dydy <span className="text-amber-400">Custom</span>
           </Link>
 
-          {/* Navigation links in the middle */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/shop"
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors relative group"
+              className="text-sm font-medium text-neutral-300 hover:text-amber-400 transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-amber-400 after:transition-all after:duration-200 hover:after:w-full"
             >
               Shop
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
               href="/about"
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors relative group"
+              className="text-sm font-medium text-neutral-300 hover:text-amber-400 transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-amber-400 after:transition-all after:duration-200 hover:after:w-full"
             >
               About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
             <Link
               href="/contact"
-              className="text-gray-700 hover:text-red-600 font-medium transition-colors relative group"
+              className="text-sm font-medium text-neutral-300 hover:text-amber-400 transition-colors duration-200 relative py-2 after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-amber-400 after:transition-all after:duration-200 hover:after:w-full"
             >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
           </nav>
 
@@ -121,59 +116,59 @@ export default function Header() {
                 <>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="p-2 hover:bg-red-50 rounded-full transition-colors group"
+                    className="p-2.5 hover:bg-neutral-100 rounded-full transition-colors duration-200 group"
                   >
-                    <User className="w-6 h-6 text-gray-700 group-hover:text-red-600 transition-colors" />
+                    <User className="w-5 h-5 text-neutral-600 group-hover:text-neutral-900 transition-colors" />
                   </button>
 
                   {/* Dropdown Menu */}
                   {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-lg border border-gray-200 py-3 z-50">
-                      <div className="px-6 py-3 border-b border-gray-200">
-                        <p className="text-base font-semibold text-gray-900">
+                    <div className="absolute right-0 mt-2 w-72 bg-neutral-900 rounded-2xl shadow-xl border border-amber-500/20 py-2 z-50">
+                      <div className="px-5 py-3 border-b border-neutral-700">
+                        <p className="text-sm font-medium text-neutral-200 truncate">
                           {user.email}
                         </p>
                       </div>
                       <Link
                         href="/account"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="flex items-center gap-4 px-6 py-3 text-base text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        className="flex items-center gap-3 px-5 py-2.5 text-sm text-neutral-300 hover:bg-white/5 hover:text-amber-400 transition-colors duration-200 rounded-lg mx-2"
                       >
-                        <User className="w-5 h-5" />
+                        <User className="w-4 h-4" />
                         Profile
                       </Link>
                       <Link
                         href="/account/orders"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="flex items-center gap-4 px-6 py-3 text-base text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        className="flex items-center gap-3 px-5 py-2.5 text-sm text-neutral-300 hover:bg-white/5 hover:text-amber-400 transition-colors duration-200 rounded-lg mx-2"
                       >
-                        <Package className="w-5 h-5" />
+                        <Package className="w-4 h-4" />
                         Orders
                       </Link>
                       <Link
                         href="/account/settings"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="flex items-center gap-4 px-6 py-3 text-base text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        className="flex items-center gap-3 px-5 py-2.5 text-sm text-neutral-300 hover:bg-white/5 hover:text-amber-400 transition-colors duration-200 rounded-lg mx-2"
                       >
-                        <Settings className="w-5 h-5" />
+                        <Settings className="w-4 h-4" />
                         Settings
                       </Link>
                       {isAdmin && (
                         <Link
                           href="/admin"
                           onClick={() => setIsDropdownOpen(false)}
-                          className="flex items-center gap-4 px-6 py-3 text-base text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                          className="flex items-center gap-3 px-5 py-2.5 text-sm text-neutral-300 hover:bg-white/5 hover:text-amber-400 transition-colors duration-200 rounded-lg mx-2"
                         >
-                          <Shield className="w-5 h-5" />
+                          <Shield className="w-4 h-4" />
                           Admin
                         </Link>
                       )}
-                      <div className="border-t border-gray-200 my-2"></div>
+                      <div className="border-t border-neutral-700 my-2" />
                       <button
                         onClick={handleLogout}
-                        className="w-full flex items-center gap-4 px-6 py-3 text-base text-red-600 hover:bg-red-50 transition-colors text-left"
+                        className="w-full flex items-center gap-3 px-5 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors duration-200 text-left rounded-lg mx-2"
                       >
-                        <LogOut className="w-5 h-5" />
+                        <LogOut className="w-4 h-4" />
                         Logout
                       </button>
                     </div>
@@ -182,9 +177,9 @@ export default function Header() {
               ) : (
                 <Link
                   href="/auth/login"
-                  className="p-2 hover:bg-red-50 rounded-full transition-colors group"
+                  className="p-2.5 hover:bg-white/10 rounded-full transition-colors duration-200 group"
                 >
-                  <User className="w-6 h-6 text-gray-700 group-hover:text-red-600 transition-colors" />
+                  <User className="w-5 h-5 text-neutral-300 group-hover:text-amber-400 transition-colors" />
                 </Link>
               )}
             </div>

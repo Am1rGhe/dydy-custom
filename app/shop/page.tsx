@@ -25,70 +25,63 @@ export default async function ShopPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Shop</h1>
-          <p className="text-gray-600">Discover our collection</p>
+        <div className="mb-10">
+          <h1 className="text-3xl font-bold tracking-tight text-white mb-1">Shop</h1>
+          <p className="text-neutral-400 text-sm">Discover our collection</p>
         </div>
 
-        {/* Products grid */}
         {products && products.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products.map((product) => (
               <Link
                 key={product.id}
                 href={`/shop/${product.id}`}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden group"
+                className="group bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-800 shadow-lg hover:shadow-xl hover:border-amber-500/40 transition-all duration-300"
               >
-                {/* Product image */}
-                <div className="w-full h-64 bg-gray-200 flex items-center justify-center relative overflow-hidden">
+                <div className="aspect-[4/5] bg-neutral-800 flex items-center justify-center relative overflow-hidden">
                   {product.image_url ? (
                     <img
                       src={product.image_url}
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     />
                   ) : (
-                    <div className="text-gray-400 text-4xl font-bold">
+                    <span className="text-neutral-500 text-4xl font-semibold">
                       {product.name.charAt(0)}
-                    </div>
+                    </span>
                   )}
                   {product.featured && (
-                    <span className="absolute top-2 right-2 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">
+                    <span className="absolute top-3 right-3 bg-amber-500 text-black text-xs font-medium px-2.5 py-1 rounded-full">
                       Featured
                     </span>
                   )}
                 </div>
-
-                {/* Product info */}
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-red-600 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-2">
+                <div className="p-5">
+                  <p className="text-xs font-medium text-neutral-500 uppercase tracking-wider mb-1.5">
                     {product.categories?.name || "Uncategorized"}
                   </p>
+                  <h3 className="font-semibold text-white mb-2 group-hover:text-amber-400 transition-colors duration-200 line-clamp-2">
+                    {product.name}
+                  </h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-gray-900">
+                    <span className="text-lg font-semibold text-amber-400">
                       ${product.base_price}
                     </span>
-                    <span className="text-sm text-gray-500">
-                      {product.in_stock ? (
-                        <span className="text-green-600">In Stock</span>
-                      ) : (
-                        <span className="text-red-600">Out of Stock</span>
-                      )}
-                    </span>
+                    {product.in_stock ? (
+                      <span className="text-xs text-emerald-400 font-medium">In stock</span>
+                    ) : (
+                      <span className="text-xs text-amber-600 font-medium">Out of stock</span>
+                    )}
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No products found.</p>
+          <div className="text-center py-16 rounded-2xl border border-neutral-800 bg-neutral-900">
+            <p className="text-neutral-400">No products yet.</p>
           </div>
         )}
       </div>

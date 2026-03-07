@@ -49,7 +49,7 @@ export default function AddToCartButton({
       {/* Size slector  */}
       {sizes && Array.isArray(sizes) && sizes.length > 0 && (
         <div className="mb-6">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-neutral-200 mb-2">
             Size
           </label>
           <div className="flex flex-wrap gap-2">
@@ -59,8 +59,8 @@ export default function AddToCartButton({
                 onClick={() => setSelectedSize(size)}
                 className={`px-4 py-2 border-2 rounded-lg font-medium transition-colors cursor-pointer ${
                   selectedSize === size
-                    ? "border-red-600 bg-red-50 text-red-600"
-                    : "border-gray-900 text-gray-900 hover:border-red-600 hover:text-red-600"
+                    ? "border-amber-500 bg-amber-500/20 text-amber-400"
+                    : "border-neutral-600 text-neutral-300 hover:border-amber-500 hover:text-amber-400"
                 }`}
               >
                 {size}
@@ -70,11 +70,10 @@ export default function AddToCartButton({
         </div>
       )}
 
-      {/* Add to cart button */}
       <button
         onClick={handleAddToCart}
         disabled={!inStock || !selectedSize}
-        className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-auto cursor-pointer"
+        className="w-full bg-amber-500 hover:bg-amber-400 text-black font-semibold py-4 px-6 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-auto cursor-pointer"
       >
         {showSuccess ? (
           <>
