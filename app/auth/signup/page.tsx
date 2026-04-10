@@ -45,10 +45,13 @@ function SignupContent() {
     setError(null);
     try {
       const supabase = createClientSupabase();
+      // Same origin as the page where the user signed up (Vercel vs localhost) for the email confirmation link.
+      const origin = window.location.origin;
       const { error: authError } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
+          emailRedirectTo: `${origin}/auth/login`,
           data: {
             name: data.name,
           },
